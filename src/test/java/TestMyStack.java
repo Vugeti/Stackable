@@ -25,23 +25,25 @@ public class TestMyStack {
         stack.putOnStack(1);
         stack.putOnStack(2);
         stack.putOnStack(3);
-        Assertions.assertEquals(3,stack.deleteElement());
+        Assertions.assertEquals(3, stack.deleteElement());
     }
+
     @Test
-    void addElementTest(){
+    void addElementTest() {
         MyStack stack = new MyStack(10);
         stack.putOnStack(1);
         stack.putOnStack(1);
         stack.putOnStack(2);
-        Assertions.assertEquals(2,stack.checkTopElement());
+        Assertions.assertEquals(2, stack.checkTopElement());
     }
+
     @Test
-    void deleteElementTest(){
+    void deleteElementTest() {
         MyStack stack = new MyStack(5);
         stack.putOnStack(5);
         stack.putOnStack(2);
         stack.deleteElement();
-        Assertions.assertEquals(5,stack.checkTopElement());
+        Assertions.assertEquals(5, stack.checkTopElement());
 
     }
 }

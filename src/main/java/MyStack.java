@@ -1,7 +1,7 @@
 
 import java.util.Arrays;
 
-public class MyStack {
+public class MyStack implements Stackable {
     private int size;
     private int[] stackArray;
     private int top;
@@ -9,9 +9,10 @@ public class MyStack {
 
     public MyStack(int size) {
         this.size = size;
-        stackArray = new int[size];
-        top = -1;
+        this.stackArray = new int[size];
+        this.top = -1;
     }
+
 
     public boolean stackIsEmpty() {
         return (top == -1);
@@ -21,19 +22,13 @@ public class MyStack {
         if (stackIsFull()) {
             System.out.println("stack is full!");
         } else {
-            int i = ++top;
-            stackArray[i] = element;
-            System.out.println("Top is " + top);
+            stackArray[++top] = element;
+            System.out.println("Top is " + top + " element is " + element);
         }
     }
 
     public boolean stackIsFull() {
-        try {
-            return (top == size - 1);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Stack is full");
-        }
-        return false;
+        return (top == size - 1);
     }
 
     public int deleteElement() {     //pop
@@ -57,7 +52,7 @@ public class MyStack {
     }
 
     public static void main(String[] args) {
-        MyStack stack = new MyStack(3);
+        MyStack stack = new MyStack(5);
         stack.putOnStack(1);
         stack.putOnStack(2);
         stack.putOnStack(3);
