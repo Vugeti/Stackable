@@ -20,14 +20,13 @@ public class MyStack implements Stackable {
 
     public void putOnStack(int element) {       //push
         try {
-
-
-        if (stackIsFull()) {
-            System.out.println("stack is full!");
-        } else {
-            stackArray[++top] = element;
-            System.out.println("Top is " + top + " element is " + element);
-        }}catch (ArrayIndexOutOfBoundsException e){
+            if (stackIsFull()) {
+                System.out.println("stack is full!");
+            } else {
+                stackArray[++top] = element;
+                System.out.println("Top is " + top + " element is " + element);
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("stack is full");
         }
     }
