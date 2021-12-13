@@ -61,10 +61,6 @@ public class MyStack implements Stackable {
 
     public static void main(String[] args) {
         MyStack stack = new MyStack(3);
-//        stack.putOnStack(1);
-//        stack.putOnStack(1);
-//        stack.putOnStack(1);
-//        stack.putOnStack(1);
         stack.deleteElement();
         System.out.println(Arrays.toString(stack.stackArray));
     }
