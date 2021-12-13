@@ -1,12 +1,14 @@
+import java.util.Optional;
+
 public interface Stackable {
 
     boolean stackIsEmpty();
 
-    void putOnStack(int element);
+    void putOnStack(int element) throws FullStackException;
 
     boolean stackIsFull();
 
-    int deleteElement();
+    Optional<Integer> deleteElement();
 
     int checkTopElement();
 

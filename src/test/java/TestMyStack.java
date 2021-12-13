@@ -1,35 +1,34 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 public class TestMyStack {
     @Test
     void isEmpty() {
         MyStack stack = new MyStack(0);
         stack.deleteElement();
-        Assertions.assertTrue(stack.stackIsEmpty());
+        EmptyStackException emptyStackException = Assertions.assertThrows(EmptyStackException.class, stack::deleteElement1);
+        Assertions.assertEquals(emptyStackException.getMessage(), "Empty");
     }
 
     @Test
-    void IsFull() {
-        MyStack stack = new MyStack(3);
+    void IsFull() throws FullStackException {
+        MyStack stack = new MyStack(1);
         stack.putOnStack(1);
-        stack.putOnStack(1);
-        stack.putOnStack(1);
-        stack.putOnStack(1);
-        Assertions.assertTrue(stack.stackIsFull());
+        FullStackException fullStackException = Assertions.assertThrows(FullStackException.class, () -> stack.putOnStack(1));
+        Assertions.assertEquals(fullStackException.getMessage(), "fuck");
     }
 
     @Test
-    void checkTopElementOnStack() {
-        MyStack stack = new MyStack(3);
+    void checkTopElementOnStack() throws EmptyStackException, FullStackException {
+        MyStack stack = new MyStack(1);
         stack.putOnStack(1);
-        stack.putOnStack(2);
-        stack.putOnStack(3);
-        Assertions.assertEquals(3, stack.deleteElement());
+        Assertions.assertEquals(1, stack.deleteElement1());
     }
 
     @Test
-    void addElementTest() {
+    void addElementTest() throws FullStackException {
         MyStack stack = new MyStack(10);
         stack.putOnStack(1);
         stack.putOnStack(1);
@@ -38,12 +37,19 @@ public class TestMyStack {
     }
 
     @Test
-    void deleteElementTest() {
+    void deleteElementTest() throws FullStackException {
         MyStack stack = new MyStack(5);
         stack.putOnStack(5);
         stack.putOnStack(2);
         stack.deleteElement();
         Assertions.assertEquals(5, stack.checkTopElement());
 
+    }
+
+    @Test
+    void isEmptyOptions() {
+        MyStack stack = new MyStack(1);
+        Optional<Integer> oStack = stack.deleteElement();
+        Assertions.assertTrue(oStack.isEmpty());
     }
 }
